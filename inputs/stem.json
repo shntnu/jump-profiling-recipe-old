@@ -1,0 +1,42 @@
+{
+    "scenario": "stem",
+    "pipeline": "profiles_var_mad_int_featselect",
+    "keep_image_features": true,
+    "use_mad_negcon": false,
+    "existing_profile_file": "/Users/shsingh/Documents/GitHub/neuronal-cell-painting/5.reanalysis/output/processed/augmented/combined.parquet",
+    "sources": [
+        "source_1",
+        "source_2",
+        "source_3",
+        "source_5",
+        "source_6",
+        "source_7",
+        "source_8",
+        "source_9",
+        "source_10",
+        "source_11"
+    ],
+    "plate_types": [
+        "COMPOUND",
+        "TARGET2"
+    ],
+    "batch_key": "Metadata_Source",
+    "label_key": "Metadata_JCP2022",
+    "column_norm": "Metadata_JCP2022",
+    "meta_col_new": [
+        "Metadata_Plate",
+        "Metadata_Well",
+        "Metadata_Plate_Map_Name",
+        "Metadata_cell_type",
+        "Metadata_line_ID",
+        "Metadata_line_condition",
+        "Metadata_line_source",
+        "Metadata_plating_density",
+        "Metadata_Object_Count",
+        "Metadata_Object_Count_inferred",
+        "Metadata_Site_Count"
+    ],
+    "values_norm": [],
+    "sphering_method": "ZCA-cor",
+    "sphering_n_opts": 25
+}
