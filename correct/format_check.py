@@ -40,7 +40,7 @@ def standardize_col_names(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def run_format_check(profile_dir: str):
+def run_format_check(profile_dir: str, meta_col_new=None) -> None:
     """
     Ensure profiles have expected data types and column names
     """
@@ -49,14 +49,14 @@ def run_format_check(profile_dir: str):
     output_dir = (
         "outputs/" + profile_dir.split("/")[1] + "_public/"
     )  # Save new profiles to new folder "{scenario}_public/"
-   
+
     if not os.path.isdir(output_dir):
         os.mkdir(output_dir)
 
     for file in files:
         file_path = os.path.join(profile_dir, file)
         file_output_path = os.path.join(output_dir, file)
-        df = restrict_column_type(file_path)
+        df = restrict_column_type(file_path, meta_col_new)
         if ("harmony" in file) or ("PCA" in file):
             df = standardize_col_names(df)
         df.to_parquet(file_output_path)
