@@ -23,7 +23,7 @@
     ],
     "sphering_method": "ZCA-cor",
     "sphering_n_opts": 25,
-    "copairs_params": {
+    "ap_params": {
         "pos_sameby": [
             "Metadata_cell_type",
             "Metadata_line_ID",
@@ -36,6 +36,18 @@
         ],
         "neg_diffby": [
             "Metadata_line_ID"
-        ]
+        ],
+        "batch_size": 20000
+    },
+    "map_params": {
+        "sameby": [
+            "Metadata_cell_type",
+            "Metadata_line_ID",
+            "Metadata_line_condition",
+            "Metadata_line_source"
+        ],
+        "threshold": 0.05,
+        "null_size": 10000,
+        "seed": 0
     }
 }
