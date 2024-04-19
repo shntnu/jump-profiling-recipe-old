@@ -14,7 +14,7 @@ include: "rules/map.smk"
 rule all:
     input:
         f"outputs/{config['scenario']}/reformat.done",
-
+        ap_negcon_path=f"outputs/{config['scenario']}/metrics/{config['pipeline']}_ap_nonrep.parquet",
 
 rule reformat:
     input:
