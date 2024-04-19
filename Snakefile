@@ -35,9 +35,9 @@ rule write_parquet:
     output:
         "outputs/{scenario}/profiles.parquet",
     params:
-        sources=config["sources"],
-        plate_types=config["plate_types"],
-        negcon_list=config["values_norm"],
+        sources=config.get("sources", None),
+        plate_types=config.get("plate_types", None),
+        negcon_codes=config.get("values_norm", None),
         existing_profile_file=config.get("existing_profile_file", None),
     run:
         if "existing_profile_file" in config:
@@ -59,7 +59,7 @@ rule compute_norm_stats:
         "outputs/{scenario}/norm_stats/{pipeline}.parquet",
     params:
         use_negcon=config["use_mad_negcon"],
-        negcon_list=config["values_norm"],
+        negcon_list=config.get("values_norm", None),
     run:
         pp.stats.compute_norm_stats(
             *input,
