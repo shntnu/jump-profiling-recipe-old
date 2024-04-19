@@ -59,7 +59,7 @@ def average_precision_nonrep(
     ap_path,
     plate_types,
     negcon_codes,
-    copairs_params={
+    ap_params={
         "pos_sameby": ["Metadata_JCP2022"],
         "pos_diffby": [],
         "neg_sameby": ["Metadata_Plate"],
@@ -74,15 +74,27 @@ def average_precision_nonrep(
     result = copairs.average_precision(
         meta,
         vals,
-        **copairs_params,
+        **ap_params,
     )
     result.reset_index(drop=True).to_parquet(ap_path)
 
 
-def mean_average_precision(ap_path, map_path, threshold=0.05):
+def mean_average_precision(
+        ap_path,
+        map_path,
+        map_params={
+            "threshold": 0.05,
+            "sameby": "Metadata_JCP2022",
+            "null_size": 10000,
+            "seed": 0
+        }):
     ap_scores = pd.read_parquet(ap_path)
 
     map_scores = copairs.mean_average_precision(
-        ap_scores, "Metadata_JCP2022", threshold=threshold, null_size=10000, seed=0
+        ap_scores,
+        sameby=map_params.sameby,
+        threshold=map_params.threshold,
+        null_size=map_params.null_size,
+        seed=map_params.seed
     )
     map_scores.to_parquet(map_path)
