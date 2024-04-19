@@ -5,7 +5,6 @@
     "use_mad_negcon": false,
     "existing_profile_file": "inputs/workspace/profiles/stem/profiles.parquet",
     "sources": [],
-    "plate_types": [],
     "batch_key": "",
     "label_key": "",
     "column_norm": "",
@@ -22,16 +21,21 @@
         "Metadata_Object_Count_inferred",
         "Metadata_Site_Count"
     ],
-    "values_norm": [],
     "sphering_method": "ZCA-cor",
     "sphering_n_opts": 25,
-    "pos_sameby": [
-        "Metadata_cell_type",
-        "Metadata_line_ID",
-        "Metadata_line_condition",
-        "Metadata_line_source"
-    ],
-    "pos_diffby": null,
-    "neg_sameby": "Metadata_Plate",
-    "neg_diffby": "Metadata_line_ID"
+    "copairs_params": {
+        "pos_sameby": [
+            "Metadata_cell_type",
+            "Metadata_line_ID",
+            "Metadata_line_condition",
+            "Metadata_line_source"
+        ],
+        "pos_diffby": [],
+        "neg_sameby": [
+            "Metadata_Plate"
+        ],
+        "neg_diffby": [
+            "Metadata_line_ID"
+        ]
+    }
 }
