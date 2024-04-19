@@ -18,7 +18,7 @@ rule average_precision_nonrep:
     params:
         plate_types=config.get("plate_types", None),
         negcon_codes=config.get("values_norm", None),
-        copairs_params=config.get("copairs_params", None),
+        ap_params=config.get("ap_params", None),
     run:
         pp.metrics.average_precision_nonrep(*input, *output, **params)
 
@@ -28,5 +28,7 @@ rule mean_average_precision:
         "outputs/{prefix}/metrics/{pipeline}_ap_{reftype}.parquet",
     output:
         "outputs/{prefix}/metrics/{pipeline}_map_{reftype}.parquet",
+    params:
+        map_params=config.get("map_params", None),
     run:
-        pp.metrics.mean_average_precision(*input, *output)
+        pp.metrics.mean_average_precision(*input, *output, map_params)
