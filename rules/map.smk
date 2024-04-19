@@ -16,8 +16,12 @@ rule average_precision_nonrep:
     output:
         "outputs/{prefix}/metrics/{pipeline}_ap_nonrep.parquet",
     params:
-        plate_types=config["plate_types"],
-        negcon_codes=config["values_norm"],
+        plate_types=config.get("plate_types", None),
+        negcon_codes=config.get("values_norm", None),
+        pos_sameby=config.get("pos_sameby", "Metadata_JCP2022"),
+        pos_diffby=config.get("pos_diffby", None),
+        neg_sameby=config.get("neg_sameby", "Metadata_Plate"),
+        neg_diffby=config.get("neg_diffby", "Metadata_JCP2022"),
     run:
         pp.metrics.average_precision_nonrep(*input, *output, **params)
 
