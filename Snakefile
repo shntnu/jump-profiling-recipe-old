@@ -23,9 +23,10 @@ rule reformat:
         touch("outputs/{scenario}/reformat.done"),
     params:
         profile_dir=lambda w: f"outputs/{w.scenario}/",
+        meta_col_new=config.get("meta_col_new", None),
     run:
         if "meta_col_new" in config:
-            correct.format_check.run_format_check(params.profile_dir, config["meta_col_new"])
+            correct.format_check.run_format_check(params.profile_dir, params.meta_col_new)
         else:
             correct.format_check.run_format_check(params.profile_dir)
 
@@ -33,16 +34,22 @@ rule reformat:
 rule write_parquet:
     output:
         "outputs/{scenario}/profiles.parquet",
+    params:
+        sources=config["sources"],
+        plate_types=config["plate_types"],
+        negcon_list=config["values_norm"],
+        existing_profile_file=config.get("existing_profile_file", None),
     run:
         if "existing_profile_file" in config:
-            shell("mkdir -p $(dirname {output}) && cp {input} {output}".format(input=config["existing_profile_file"], output=output))
+            shell("mkdir -p $(dirname {output}) && cp {input} {output}".format(input=params.existing_profile_file, output=output))
         else:
             pp.io.write_parquet(
-                config["sources"],
-                config["plate_types"],
+                params.sources,
+                params.plate_types,
                 *output,
-                negcon_list=config["values_norm"],
+                negcon_list=params.negcon_list,
             )
+
 
 
 rule compute_norm_stats:
