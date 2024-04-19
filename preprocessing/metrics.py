@@ -92,9 +92,6 @@ def mean_average_precision(
 
     map_scores = copairs.mean_average_precision(
         ap_scores,
-        sameby=map_params.sameby,
-        threshold=map_params.threshold,
-        null_size=map_params.null_size,
-        seed=map_params.seed
+        **map_params
     )
     map_scores.to_parquet(map_path)
