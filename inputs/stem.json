@@ -3,26 +3,12 @@
     "pipeline": "profiles_var_mad_int_featselect",
     "keep_image_features": true,
     "use_mad_negcon": false,
-    "existing_profile_file": "/Users/shsingh/Documents/GitHub/neuronal-cell-painting/5.reanalysis/output/processed/augmented/combined.parquet",
-    "sources": [
-        "source_1",
-        "source_2",
-        "source_3",
-        "source_5",
-        "source_6",
-        "source_7",
-        "source_8",
-        "source_9",
-        "source_10",
-        "source_11"
-    ],
-    "plate_types": [
-        "COMPOUND",
-        "TARGET2"
-    ],
-    "batch_key": "Metadata_Source",
-    "label_key": "Metadata_JCP2022",
-    "column_norm": "Metadata_JCP2022",
+    "existing_profile_file": "inputs/workspace/profiles/stem/profiles.parquet",
+    "sources": [],
+    "plate_types": [],
+    "batch_key": "",
+    "label_key": "",
+    "column_norm": "",
     "meta_col_new": [
         "Metadata_Plate",
         "Metadata_Well",
@@ -38,5 +24,14 @@
     ],
     "values_norm": [],
     "sphering_method": "ZCA-cor",
-    "sphering_n_opts": 25
+    "sphering_n_opts": 25,
+    "pos_sameby": [
+        "Metadata_cell_type",
+        "Metadata_line_ID",
+        "Metadata_line_condition",
+        "Metadata_line_source"
+    ],
+    "pos_diffby": null,
+    "neg_sameby": "Metadata_Plate",
+    "neg_diffby": "Metadata_line_ID"
 }
