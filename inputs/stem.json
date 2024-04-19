@@ -28,7 +28,9 @@
             "Metadata_cell_type",
             "Metadata_line_ID",
             "Metadata_line_condition",
-            "Metadata_line_source"
+            "Metadata_line_source",
+            "Metadata_Plate",
+            "Metadata_Plate_Map_Name"
         ],
         "pos_diffby": [],
         "neg_sameby": [
@@ -44,10 +46,12 @@
             "Metadata_cell_type",
             "Metadata_line_ID",
             "Metadata_line_condition",
-            "Metadata_line_source"
+            "Metadata_line_source",
+            "Metadata_Plate",
+            "Metadata_Plate_Map_Name"
         ],
         "threshold": 0.05,
-        "null_size": 10000,
+        "null_size": 100000,
         "seed": 0
     }
 }
