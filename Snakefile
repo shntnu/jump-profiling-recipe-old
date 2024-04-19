@@ -2,6 +2,9 @@ wildcard_constraints:
     pipeline=r"[_a-zA-Z.~0-9\-]*",
     scenario=r"[_a-zA-Z.~0-9\-]*",
 
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 import correct
 import preprocessing as pp
