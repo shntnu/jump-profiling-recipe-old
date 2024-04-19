@@ -8,10 +8,10 @@ rule sphering_explore:
         "outputs/{scenario}/sphering/exploration/{pipeline}_reg~{reg}.parquet",
         "outputs/{scenario}/sphering/exploration/{pipeline}_reg~{reg}.npz",
     params:
-        method=config["sphering_method"],
+        method=config.get("sphering_method", None),
         reg=lambda wc: float(wc.reg),
-        column_norm=config["column_norm"],
-        values_norm=config["values_norm"],
+        column_norm=config.get("column_norm", None),
+        values_norm=config.get("values_norm", None),
     run:
         pp.sphering.sphering(*input, *params, *output)
 
