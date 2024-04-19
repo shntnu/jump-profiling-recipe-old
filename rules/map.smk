@@ -31,4 +31,4 @@ rule mean_average_precision:
     params:
         map_params=config.get("map_params", None),
     run:
-        pp.metrics.mean_average_precision(*input, *output, map_params)
+        pp.metrics.mean_average_precision(*input, *output, **params)
